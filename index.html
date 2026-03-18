@@ -26,8 +26,11 @@
             <a class="btn btn-secondary" href="https://auth.riotgames.com/authorize?client_id=riot-client&redirect_uri=https://playvalorant.com/opt_in&response_type=token%20id_token&scope=openid%20link%20ban%20riot%3A%2F%2Friot.com%2Fentitlements&nonce=1&prompt=login">
                 Switch Account / Force Login
             </a>
-            <input id="token-url-input" name="token-url-input" type="url" placeholder="Paste the redirected URL here..." aria-label="Authentication redirect URL input" autocomplete="off">
-            <button class="btn btn-primary" onclick="handleManualToken()">Use Redirect URL</button>
+            <p style="margin: 0; color: var(--val-gray); font-size: 0.95rem; text-align: center; max-width: 720px;">
+                Riot only allows this login on official redirect domains. After login opens, copy the full redirected URL (or just the #hash) and paste it below.
+            </p>
+            <input id="token-url-input" name="token-url-input" type="text" placeholder="Paste redirected URL or #hash from playvalorant.com/opt_in..." aria-label="Authentication redirect URL input" autocomplete="off" style="width: min(100%, 720px); padding: 10px 12px; border: 1px solid var(--card-border); background: var(--val-black); color: var(--val-white); border-radius: 4px;">
+            <button class="btn btn-primary" onclick="handleManualToken()">Continue With Redirect URL</button>
         </div>
 
         <!-- Header Profile UI moved top right -->
@@ -96,6 +99,6 @@
     </div>
 </div>
 
-<script src="js/app.js?v=14"></script>
+<script src="js/app.js?v=15"></script>
 </body>
 </html>

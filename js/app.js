@@ -96,19 +96,27 @@ function checkLoginRedirect() {
 }
 
 function handleManualToken() {
-    const tokenUrl = document.getElementById("token-url-input").value.trim();
-    if (!tokenUrl.includes("#")) {
-        alert("Invalid redirected URL. After logging in, copy the full URL from your browser address bar and paste it here (example: https://playvalorant.com/opt_in#access_token=...).");
+    const tokenInput = document.getElementById("token-url-input");
+    if (!tokenInput) {
+        alert("Authentication input is unavailable. Please refresh the page and try again.");
         return;
     }
 
-    const fragment = tokenUrl.split("#").slice(1).join("#");
-    if (!fragment) {
-        alert("Invalid redirected URL. The # fragment is empty.");
+    const tokenValue = tokenInput.value.trim();
+    if (!tokenValue) {
+        alert("Paste the redirected URL (or just the # fragment) after Riot login.");
         return;
     }
-    if (!fragment.includes("access_token=")) {
-        alert("Invalid redirected URL. The # fragment must contain an access_token.");
+
+    let fragment = tokenValue;
+    if (tokenValue.startsWith("#")) {
+        fragment = tokenValue.slice(1);
+    } else if (tokenValue.includes("#")) {
+        fragment = tokenValue.split("#").slice(1).join("#");
+    }
+
+    if (!fragment || !fragment.includes("access_token=")) {
+        alert("Invalid redirect data. It must include access_token in the URL hash.");
         return;
     }
 
