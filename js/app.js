@@ -95,6 +95,27 @@ function checkLoginRedirect() {
     }
 }
 
+function handleManualToken() {
+    const tokenUrl = document.getElementById("token-url-input").value.trim();
+    if (!tokenUrl.includes("#")) {
+        alert("Invalid redirected URL. After logging in, copy the full URL from your browser address bar and paste it here (example: https://playvalorant.com/opt_in#access_token=...).");
+        return;
+    }
+
+    const fragment = tokenUrl.split("#").slice(1).join("#");
+    if (!fragment) {
+        alert("Invalid redirected URL. The # fragment is empty.");
+        return;
+    }
+    if (!fragment.includes("access_token=")) {
+        alert("Invalid redirected URL. The # fragment must contain an access_token.");
+        return;
+    }
+
+    window.location.hash = fragment;
+    checkLoginRedirect();
+}
+
 let globalSkinsCache = {}; // Global cache for variants modal
 
 // 2. shop fetching logic
@@ -349,4 +370,3 @@ window.onclick = function(event) {
         closeModal();
     }
 }
-
