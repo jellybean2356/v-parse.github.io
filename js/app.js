@@ -97,15 +97,23 @@ function checkLoginRedirect() {
 
 function handleManualToken() {
     const tokenInput = document.getElementById("token-url-input");
-    const tokenValue = tokenInput ? tokenInput.value.trim() : "";
+    if (!tokenInput) {
+        alert("Authentication input is unavailable. Please refresh the page and try again.");
+        return;
+    }
+
+    const tokenValue = tokenInput.value.trim();
     if (!tokenValue) {
         alert("Paste the redirected URL (or just the # fragment) after Riot login.");
         return;
     }
 
-    const fragment = tokenValue.startsWith("#")
-        ? tokenValue.slice(1)
-        : (tokenValue.includes("#") ? tokenValue.split("#").slice(1).join("#") : tokenValue);
+    let fragment = tokenValue;
+    if (tokenValue.startsWith("#")) {
+        fragment = tokenValue.slice(1);
+    } else if (tokenValue.includes("#")) {
+        fragment = tokenValue.split("#").slice(1).join("#");
+    }
 
     if (!fragment || !fragment.includes("access_token=")) {
         alert("Invalid redirect data. It must include access_token in the URL hash.");
