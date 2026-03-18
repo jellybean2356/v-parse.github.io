@@ -26,7 +26,7 @@
             <a class="btn btn-secondary" href="https://auth.riotgames.com/authorize?client_id=riot-client&redirect_uri=https://playvalorant.com/opt_in&response_type=token%20id_token&scope=openid%20link%20ban%20riot%3A%2F%2Friot.com%2Fentitlements&nonce=1&prompt=login">
                 Switch Account / Force Login
             </a>
-            <input id="token-url-input" type="text" placeholder="Paste the redirected URL here...">
+            <input id="token-url-input" name="token-url-input" type="url" placeholder="Paste the redirected URL here..." aria-label="Authentication redirect URL input" autocomplete="off">
             <button class="btn btn-primary" onclick="handleManualToken()">Use Redirect URL</button>
         </div>
 
