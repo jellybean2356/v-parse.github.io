@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script>
+        // riot API redirects to this page with the access token in the URL
+        // we instantly bounce the user back to the main app page and pass the hash along
+        window.location.replace("/" + window.location.hash);
+    </script>
+</head>
+<body>
+    <p>Loading your shop...</p>
+</body>
+</html>

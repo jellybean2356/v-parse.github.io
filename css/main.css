@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --val-red: #ff4655;
+    --val-dark: #0f1923;
+    --val-black: #111111;
+    --val-white: #ece8e1;
+    --val-gray: #768079;
+    --card-bg: rgba(236, 232, 225, 0.05);
+    --card-border: rgba(236, 232, 225, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--val-dark);
+    color: var(--val-white);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+/* Typography styles */
+h1, h2, h3, .val-font {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Layout container */
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header & Status Section */
+.app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.title {
+    font-size: 4rem;
+    color: var(--val-red);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.btn-primary {
+    background-color: var(--val-red);
+    color: var(--val-white);
+}
+
+.btn-primary:hover {
+    background-color: #ff5865;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--val-white);
+    border: 1px solid var(--val-gray);
+    /* reset clip path for outline button to render simple square border nicely */
+    clip-path: none; 
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--val-white);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: var(--val-red);
+    border: 1px solid var(--val-red);
+    clip-path: none;
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin-left: 1rem;
+}
+
+.btn-danger:hover {
+    background-color: rgba(255, 70, 85, 0.1);
+}
+
+/* User Profile Badge */
+#logged-in-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    padding: 12px 24px;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+}
+
+#account-name-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Status Indicator */
+.status-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: var(--val-gray);
+}
+
+#status-text {
+    color: var(--val-white);
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.success-text {
+    color: #4caf50 !important;
+}
+
+/* Store Grid */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* strictly horizontal row */
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+/* Skin Card */
+.shop-card {
+    background: var(--val-black);
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Distinctive Valorant corner cut on the top right */
+.shop-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--val-dark);
+    border-bottom: 1px solid var(--card-border);
+    border-left: 1px solid var(--card-border);
+    transform: translate(11px, -11px) rotate(45deg);
+    z-index: 2;
+}
+
+.shop-card:hover {
+    border-color: var(--val-red);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.card-image-wrap {
+    background: radial-gradient(circle, rgba(118,128,121,0.2) 0%, rgba(15,25,35,0) 70%);
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.card-image-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+    transition: transform 0.3s ease;
+}
+
+.shop-card:hover .card-image-wrap img {
+    transform: scale(1.05);
+}
+
+.card-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.skin-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--val-white);
+    line-height: 1.4;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.vp-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.vp-cost {
+    font-size: 0.9rem;
+    color: var(--val-white);
+    letter-spacing: 0.5px;
+}
+
+/* --- NEW VALORANT BACKGROUND --- */
+body {
+    background-color: var(--val-dark);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(255, 70, 85, 0.08), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(255, 70, 85, 0.05), transparent 40%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2h2v2h20v2H22v2.5h-2zM0 20h2v20H0V20zm38 0h2v20h-2V20z' fill='%23ece8e1' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+    z-index: -1;
+}
+
+/* Header Profile Styling Fix */
+.profile-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.profile-badge {
+    display: flex;
+    align-items: center;
+    background: rgba(17, 17, 17, 0.8);
+    border: 1px solid var(--card-border);
+    padding: 8px 16px;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+}
+
+.profile-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    fill: var(--val-red);
+}
+
+.btn-logout {
+    margin-left: 12px;
+    background: transparent;
+    color: var(--val-gray);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    color: var(--val-red);
+    background: rgba(255, 70, 85, 0.1);
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 25, 35, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: var(--val-black);
+    width: 90%;
+    max-width: 1300px;
+    border: 1px solid var(--val-red);
+    position: relative;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: max-width 0.3s ease;
+}
+
+
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: var(--val-gray);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: var(--val-red);
+}
+
+.modal-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    gap: 2rem;
+    width: 100%;
+}
+
+.modal-left {
+    flex: 0 1 calc(50% - 1rem);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.modal-right {
+    flex: 0 1 calc(50% - 1rem);
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-width: 0;
+    padding-left: 0;
+}
+
+.modal-image-container {
+    height: 340px;
+    width: 100%;
+    background: radial-gradient(circle, rgba(118,128,121,0.1) 0%, rgba(15,25,35,0) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+    border: 1px solid var(--card-border);
+    box-sizing: border-box;
+}
+
+.modal-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.variants-title {
+    font-size: 1.5rem;
+    color: var(--val-white);
+    margin-bottom: 1rem;
+}
+
+.variants-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.variant-swatch {
+    width: 60px;
+    height: 60px;
+    background: var(--val-dark);
+    border: 2px solid var(--card-border);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.variant-swatch.active, .variant-swatch:hover {
+    border-color: var(--val-red);
+    transform: translateY(-2px);
+}
+
+.variant-swatch img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.shop-card {
+    cursor: pointer;
+}
+
