@@ -20,12 +20,14 @@
         <img src="css/logo.png" alt="Valorant Store" style="max-height: 280px; margin: 0;">
         
         <div id="auth-section" class="btn-group">
-            <a class="btn btn-primary" href="https://auth.riotgames.com/authorize?client_id=riot-client&redirect_uri=https://v-parse.novelya.me/redirect&response_type=token%20id_token&scope=openid%20link%20ban%20riot%3A%2F%2Friot.com%2Fentitlements&nonce=1">
+            <a class="btn btn-primary" href="https://auth.riotgames.com/authorize?client_id=riot-client&redirect_uri=https://playvalorant.com/opt_in&response_type=token%20id_token&scope=openid%20link%20ban%20riot%3A%2F%2Friot.com%2Fentitlements&nonce=1">
                 Quick Login
             </a>
-            <a class="btn btn-secondary" href="https://auth.riotgames.com/authorize?client_id=riot-client&redirect_uri=https://v-parse.novelya.me/redirect&response_type=token%20id_token&scope=openid%20link%20ban%20riot%3A%2F%2Friot.com%2Fentitlements&nonce=1&prompt=login">
+            <a class="btn btn-secondary" href="https://auth.riotgames.com/authorize?client_id=riot-client&redirect_uri=https://playvalorant.com/opt_in&response_type=token%20id_token&scope=openid%20link%20ban%20riot%3A%2F%2Friot.com%2Fentitlements&nonce=1&prompt=login">
                 Switch Account / Force Login
             </a>
+            <input id="token-url-input" type="text" placeholder="Paste the redirected URL here...">
+            <button class="btn btn-primary" onclick="handleManualToken()">Use Redirect URL</button>
         </div>
 
         <!-- Header Profile UI moved top right -->

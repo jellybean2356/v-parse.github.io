@@ -95,6 +95,18 @@ function checkLoginRedirect() {
     }
 }
 
+function handleManualToken() {
+    const tokenUrl = document.getElementById("token-url-input").value;
+    if (!tokenUrl.includes("#")) {
+        alert("Invalid redirected URL. Please paste a URL that includes a # fragment.");
+        return;
+    }
+
+    const fragment = tokenUrl.substring(tokenUrl.indexOf("#") + 1);
+    window.location.hash = fragment;
+    checkLoginRedirect();
+}
+
 let globalSkinsCache = {}; // Global cache for variants modal
 
 // 2. shop fetching logic
@@ -349,4 +361,3 @@ window.onclick = function(event) {
         closeModal();
     }
 }
-
