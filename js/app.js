@@ -95,6 +95,27 @@ function checkLoginRedirect() {
     }
 }
 
+function handleManualToken() {
+    const tokenInput = document.getElementById("token-url-input");
+    const tokenValue = tokenInput ? tokenInput.value.trim() : "";
+    if (!tokenValue) {
+        alert("Paste the redirected URL (or just the # fragment) after Riot login.");
+        return;
+    }
+
+    const fragment = tokenValue.startsWith("#")
+        ? tokenValue.slice(1)
+        : (tokenValue.includes("#") ? tokenValue.split("#").slice(1).join("#") : tokenValue);
+
+    if (!fragment || !fragment.includes("access_token=")) {
+        alert("Invalid redirect data. It must include access_token in the URL hash.");
+        return;
+    }
+
+    window.location.hash = fragment;
+    checkLoginRedirect();
+}
+
 let globalSkinsCache = {}; // Global cache for variants modal
 
 // 2. shop fetching logic
